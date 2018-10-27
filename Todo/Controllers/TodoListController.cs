@@ -31,6 +31,7 @@ namespace Todo.Controllers
             return View(viewmodel);
         }
 
+        [Route("[controller]/[action]/{todoListId}")]
         public IActionResult Detail(int todoListId, bool hideDone)
         {
             var todoList = dbContext.SingleTodoList(todoListId);
