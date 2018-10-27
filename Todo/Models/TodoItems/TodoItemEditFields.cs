@@ -1,10 +1,12 @@
-﻿using Todo.Data.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+using Todo.Data.Entities;
 
 namespace Todo.Models.TodoItems
 {
     public class TodoItemEditFields : TodoItemBase
     {
         public int TodoItemId { get; set; }
+        [Display(Name = "Task is complete")]
         public bool IsDone { get; set; }
 
         public TodoItemEditFields() { }
