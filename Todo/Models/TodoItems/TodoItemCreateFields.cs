@@ -2,13 +2,9 @@
 
 namespace Todo.Models.TodoItems
 {
-    public class TodoItemCreateFields
+    public class TodoItemCreateFields : TodoItemBase
     {
-        public int TodoListId { get; set; }
-        public string Title { get; set; }
-        public string TodoListTitle { get; set; }
-        public string ResponsiblePartyId { get; set; }
-        public Importance Importance { get; set; } = Importance.Medium;
+        public override Importance Importance { get; set; } = Importance.Medium;
 
         public TodoItemCreateFields() { }
 
