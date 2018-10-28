@@ -1,5 +1,4 @@
-﻿@using Todo.Controllers
-@using Todo.Data.Entities
+﻿@using Todo.Data.Entities
 @using Todo.Services
 @model Todo.Models.TodoLists.TodoListDetailViewmodel
 
@@ -9,12 +8,18 @@
 
 <h2>@ViewData["Title"]</h2>
 
+<div class="row">
+    <div class="col-md-6">
+        <a asp-action="Detail" asp-controller="TodoList" asp-route-hideDone="@(!Model.HideDone)" asp-route-orderByRank="@(Model.OrderByRank)" class="btn btn-info">
+            <strong>@(Model.HideDone ? "Show" : "Hide") Complete Items</strong>
+        </a>
+        <a asp-action="Detail" asp-controller="TodoList" asp-route-hideDone="@(Model.HideDone)" asp-route-orderByRank="@(!Model.OrderByRank)" class="btn btn-info">
+            <strong>Order By @(Model.OrderByRank ? "Priority" : "Rank")</strong>
+        </a>
+    </div>
+</div>
 
 <div class="col-md-6">
-    <a asp-action="Detail" asp-controller="TodoList" asp-route-todoListId="@Model.TodoListId" asp-route-hideDone="@(!Model.HideDone)">
-        <strong>Toggle Complete Items</strong>
-    </a>
-
 
     <ul class="list-group">
 
@@ -24,7 +29,7 @@
             </a>
         </li>
 
-        @foreach (var item in Model.Items.OrderBy(i => i.Importance))
+        @foreach (var item in Model.Items)
         {
             string contextualClass;
             switch (item.Importance)

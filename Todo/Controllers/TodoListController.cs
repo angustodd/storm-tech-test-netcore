@@ -32,10 +32,10 @@ namespace Todo.Controllers
         }
 
         [Route("[controller]/[action]/{todoListId}")]
-        public IActionResult Detail(int todoListId, bool hideDone)
+        public IActionResult Detail(int todoListId, bool hideDone, bool orderByRank)
         {
             var todoList = dbContext.SingleTodoList(todoListId);
-            var viewmodel = TodoListDetailViewmodelFactory.Create(todoList, hideDone);
+            var viewmodel = TodoListDetailViewmodelFactory.Create(todoList, hideDone, orderByRank);
             return View(viewmodel);
         }
 
