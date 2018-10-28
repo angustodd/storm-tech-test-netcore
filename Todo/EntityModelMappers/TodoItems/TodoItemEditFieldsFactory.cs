@@ -9,13 +9,14 @@ namespace Todo.EntityModelMappers.TodoItems
         {
             var todoList = todoItem.TodoList;
             return new TodoItemEditFields(todoList.TodoListId, todoList.Title, todoItem.TodoItemId, todoItem.Title,
-                todoItem.IsDone, todoItem.ResponsiblePartyId, todoItem.Importance);
+                todoItem.IsDone, todoItem.Rank, todoItem.ResponsiblePartyId, todoItem.Importance);
         }
 
         public static void Update(TodoItemEditFields src, TodoItem dest)
         {
             dest.Title = src.Title;
             dest.IsDone = src.IsDone;
+            dest.Rank = src.Rank;
             dest.ResponsiblePartyId = src.ResponsiblePartyId;
             dest.Importance = src.Importance;
         }
